@@ -388,6 +388,169 @@ section {
   font-size: 1.05rem;
 }
 
+/* ── Signup ── */
+.signup {
+  background: var(--espresso);
+  text-align: center;
+}
+
+.signup h2       { color: var(--foam); }
+.signup .label   { color: var(--caramel); }
+
+.signup-sub {
+  color: rgba(232, 221, 208, 0.65);
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.signup-fields {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  max-width: 680px;
+}
+
+.signup-fields input[type="text"],
+.signup-fields input[type="email"] {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.85rem 1.25rem;
+  border-radius: 2rem;
+  border: 1.5px solid rgba(200, 137, 74, 0.35);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--foam);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.signup-fields input::placeholder { color: rgba(232, 221, 208, 0.4); }
+
+.signup-fields input:focus {
+  border-color: var(--caramel);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.signup-check {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(232, 221, 208, 0.6);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.signup-check input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--caramel);
+  cursor: pointer;
+}
+
+.signup-success {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  animation: fadeUp 0.5s ease both;
+}
+
+.success-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--caramel);
+  color: var(--espresso);
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 2rem;
+  border: 1.5px solid rgba(200, 137, 74, 0.35);
+  border-radius: 2rem;
+  overflow: hidden;
+  width: fit-content;
+  margin: 0 auto 2rem;
+}
+
+.signup-tab {
+  padding: 0.6rem 1.8rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: transparent;
+  color: rgba(232, 221, 208, 0.5);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.signup-tab.active {
+  background: var(--caramel);
+  color: var(--espresso);
+}
+
+.signup-tab:not(.active):hover {
+  color: var(--foam);
+}
+
+.btn-unsub {
+  background: transparent;
+  color: rgba(232, 221, 208, 0.7);
+  border: 1.5px solid rgba(232, 221, 208, 0.25);
+  padding: 0.85rem 2.2rem;
+  border-radius: 2rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.btn-unsub:hover {
+  background: rgba(232, 221, 208, 0.08);
+  color: var(--foam);
+  transform: translateY(-2px);
+}
+
+.unsub-note {
+  color: rgba(232, 221, 208, 0.35);
+  font-size: 0.8rem;
+  margin-top: 0.25rem;
+}
+
+.signup-success p {
+  color: rgba(232, 221, 208, 0.75);
+  max-width: 380px;
+}
+
+.unsub-icon {
+  background: var(--roast) !important;
+  color: var(--foam) !important;
+}
+
+
 /* ── Footer ── */
 footer {
   background: var(--espresso);

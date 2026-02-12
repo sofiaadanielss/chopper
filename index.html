@@ -17,6 +17,7 @@
       <li><a href="#about">Our Story</a></li>
       <li><a href="#menu">Menu</a></li>
       <li><a href="#visit">Visit</a></li>
+      <li><a href="#signup">Offers</a></li>
     </ul>
   </nav>
 
@@ -140,10 +141,88 @@
     </div>
   </section>
 
+  <!-- Email Signup -->
+  <section class="signup" id="signup">
+    <div class="container">
+      <span class="label">Stay in the Loop</span>
+      <h2>Get the good stuff first</h2>
+      <div class="divider"></div>
+      <p class="signup-sub">Sign up and be the first to hear about special offers, limited-time discounts, and secret menu drops.</p>
+
+      <!-- Tab toggle -->
+      <div class="signup-tabs">
+        <button class="signup-tab active" onclick="showTab('subscribe')">Subscribe</button>
+        <button class="signup-tab" onclick="showTab('unsubscribe')">Unsubscribe</button>
+      </div>
+
+      <!-- Subscribe form -->
+      <form class="signup-form" id="subscribeForm" onsubmit="handleSubscribe(event)">
+        <div class="signup-fields">
+          <input type="text" name="name" placeholder="Your name" required autocomplete="given-name" />
+          <input type="email" name="email" placeholder="Your email address" required autocomplete="email" />
+          <button type="submit" class="btn btn-primary">Notify Me</button>
+        </div>
+        <label class="signup-check">
+          <input type="checkbox" name="offers" checked />
+          <span>Yes, send me special offers &amp; discounts</span>
+        </label>
+      </form>
+
+      <!-- Unsubscribe form -->
+      <form class="signup-form" id="unsubscribeForm" onsubmit="handleUnsubscribe(event)" style="display:none;">
+        <div class="signup-fields">
+          <input type="email" name="email" placeholder="Your email address" required autocomplete="email" />
+          <button type="submit" class="btn btn-unsub">Unsubscribe</button>
+        </div>
+        <p class="unsub-note">We'll remove you from all offer notifications immediately.</p>
+      </form>
+
+      <!-- Success messages -->
+      <div class="signup-success" id="subscribeSuccess">
+        <span class="success-icon">✓</span>
+        <p>You're on the list! We'll be in touch when something good is brewing.</p>
+      </div>
+
+      <div class="signup-success" id="unsubscribeSuccess">
+        <span class="success-icon unsub-icon">×</span>
+        <p>You've been unsubscribed. Sorry to see you go — the door's always open.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer>
     <p>© 2025 <strong>Chopper Coffee</strong> · Every cup is another story.</p>
   </footer>
+
+  <script>
+    function showTab(tab) {
+      const isSub = tab === 'subscribe';
+
+      document.getElementById('subscribeForm').style.display    = isSub  ? 'flex'  : 'none';
+      document.getElementById('unsubscribeForm').style.display  = !isSub ? 'flex'  : 'none';
+      document.getElementById('subscribeSuccess').style.display   = 'none';
+      document.getElementById('unsubscribeSuccess').style.display = 'none';
+
+      document.querySelectorAll('.signup-tab').forEach((btn, i) => {
+        btn.classList.toggle('active', isSub ? i === 0 : i === 1);
+      });
+    }
+
+    function handleSubscribe(e) {
+      e.preventDefault();
+      // --- Plug in your backend / EmailJS / Formspree subscribe call here ---
+      document.getElementById('subscribeForm').style.display   = 'none';
+      document.getElementById('subscribeSuccess').style.display = 'flex';
+    }
+
+    function handleUnsubscribe(e) {
+      e.preventDefault();
+      // --- Plug in your backend unsubscribe call here ---
+      document.getElementById('unsubscribeForm').style.display   = 'none';
+      document.getElementById('unsubscribeSuccess').style.display = 'flex';
+    }
+  </script>
 
 </body>
 </html>
