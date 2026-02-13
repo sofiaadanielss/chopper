@@ -6,7 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chopper Coffee</title>
   <link rel="stylesheet" href="styles.css" />
-  <script src="decorator.js"></script>
+  
+  <script src="main.js"></script>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  
+  <script type="text/javascript">
+    (function(){
+      emailjs.init("QjTAtIqW64rAbs_eQ");
+    })();
+  </script>
 </head>
 
 <body>
@@ -211,16 +220,41 @@
     }
 
     function handleSubscribe(e) {
-      e.preventDefault();
-      // --- Plug in your backend / EmailJS / Formspree subscribe call here ---
-      document.getElementById('subscribeForm').style.display   = 'none';
-      document.getElementById('subscribeSuccess').style.display = 'flex';
+      e.preventDefault(); // Evita que la página se recargue
+
+      const form = e.target;
+      const btn = form.querySelector('button');
+      const originalText = btn.innerText;
+
+      // Indicador visual de carga
+      btn.innerText = 'Sending...';
+      btn.disabled = true;
+
+      // Envío de datos a EmailJS
+      // Usamos tus IDs confirmados: Service ID, Template ID
+      emailjs.sendForm('service_sk6ic7b', 'template_5w9gdvj', form)
+        .then(function() {
+          // ÉXITO
+          console.log('SUCCESS!');
+          document.getElementById('subscribeForm').style.display = 'none';
+          document.getElementById('subscribeSuccess').style.display = 'flex';
+          
+          // Restaurar botón (por si el usuario recarga o vuelve)
+          btn.innerText = originalText;
+          btn.disabled = false;
+        }, function(error) {
+          // ERROR
+          console.log('FAILED...', error);
+          alert('Error al enviar el correo. Revisa la consola (F12) para más detalles.');
+          btn.innerText = originalText;
+          btn.disabled = false;
+        });
     }
 
     function handleUnsubscribe(e) {
       e.preventDefault();
-      // --- Plug in your backend unsubscribe call here ---
-      document.getElementById('unsubscribeForm').style.display   = 'none';
+      // Simulación de desuscripción
+      document.getElementById('unsubscribeForm').style.display = 'none';
       document.getElementById('unsubscribeSuccess').style.display = 'flex';
     }
   </script>
